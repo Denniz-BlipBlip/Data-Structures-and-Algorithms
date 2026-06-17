@@ -9,12 +9,12 @@ class Tree
 
     Tree():root(nullptr){}
 
-    void insert(std::string word,int &id)
+    void insert(std::string word,int id)
     {
       this->root=insert(this->root,word,id);
     }
 
-    void removeWord(int &id)
+    void removeWord(int id)
     {
       this->root=deleteNode(this->root,id);
     }
