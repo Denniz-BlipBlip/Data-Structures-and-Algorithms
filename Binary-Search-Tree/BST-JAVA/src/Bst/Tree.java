@@ -7,22 +7,22 @@ public class Tree
     this.root=null;
   }
 
-  public void insert(String word,int id)
+  public void insertWord(String word,int id)
   {
     this.root=this.insert(this.root,word,id);
   }
 
-  public void search(int id)
+  public void searchWord(int id)
   {
     this.search(this.root,id);
   }
 
-  public void remove(int id)
+  public void removeWord(int id)
   {
-    this.root=this.remove(this.root,id);
+    this.root=this.removeNode(this.root,id);
   }
 
-  public void view()
+  public void viewNode()
   {
     this.inorder(this.root);
   }
@@ -44,27 +44,90 @@ public class Tree
     }
   }
 
-  private Node remove(Node root,int id)
+  private void inorder(Node root)
   {
     if(root==null)
     {
-      return null;
+      return;
     }
-
-    return root;
+    inorder(root.getLeft());
+    System.out.println(root.getData().getWord());
+    inorder(root.getRight());
   }
 
-  private Node findMin(Node root)
+  private void search(Node root,int id)
+  {
+    if(root==null)
+    {
+      return;
+    }
+
+    if(id>root.getData().getId())
+    {
+      search(root.getRight(), id);
+    }
+    else if(id<root.getData().getId())
+    {
+      search(root.getLeft(), id);
+    }
+    else 
+    {
+      System.out.println(root.getData().getWord());
+    }
+  }
+
+  private Node removeNode(Node root,int id)
   {
     if(root==null)
     {
       return null;
     }
-    
+
+    if(id>root.getData().getId())
+    {
+      return root.setRight(removeNode(root.getRight(), id));
+    }
+    else if(id<root.getData().getId())
+    {
+      return root.setLeft(removeNode(root.getLeft(), id));
+    }
+    else 
+    {
+      if(root.getRight()==null&&root.getLeft()==null)
+      {
+        return null;
+      }
+      else if(root.getRight()==null)
+      {
+        return root.getLeft();
+      }
+      else if(root.getLeft()==null)
+      {
+        return root.getRight();
+      }
+      else 
+      {
+        Node temp=findMinNode(root.getRight());
+        root.getData().setId(temp.getData().getId());
+        root.getData().setWord(temp.getData().getWord());
+        return root.setRight(removeNode(root.getRight(),temp.getData().getId()));
+      }
+    }
+  }
+
+  private Node findMinNode(Node root)
+  {
+    if(root==null)
+    {
+      return null;
+    }
+
     while(root!=null&&root.getLeft()!=null)
     {
       root=root.getLeft();
     }
     return root;
   }
+
+  private Node root;
 }
