@@ -1,7 +1,13 @@
+#include "LinkedList.h"
 #include <iostream>
-using namespace std;
 
-int main() {
-    cout << "Hello from LinkedList-Cpp!" << endl;
-    return 0;
+int main()
+{
+  LinkedList *list=new LinkedList();
+  list->addRear("Denniz");
+  list->addFront("Flores");
+  int index=9;
+  list->insertAt("Jojo", index);
+  list->view();
+  delete list;
 }
