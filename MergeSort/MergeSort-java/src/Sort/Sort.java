@@ -4,16 +4,16 @@ public class Sort
 {
   public void merge_sort(int[] array,int left,int right)
   {
-    if(right<left)
+    if(left<right)
     {
-      int mid=(right+left)/2;
-      merge_sort(array,left,mid);
-      merge_sort(array,mid+1,right);
-      merge(array,mid,right,left);
+      int mid=(left-right)/2;
+      merge_sort(array, left, mid);
+      merge_sort(array, mid+1, right);
+      merge(array,left,mid,right);
     }
   }
 
-  public void merge(int[] array,int mid,int right,int left)
+  private void merge(int[] array,int left,int mid,int right)
   {
     int n1=mid-left+1;
     int n2=right-mid;
@@ -22,11 +22,33 @@ public class Sort
 
     for(int i=0;i<n1;i++)
     {
-      l[i]=array[left+1];
+      l[i]=array[left+i];
     }
     for(int i=0;i<n2;i++)
     {
-      r[n2]=array[right+1+i]
+      r[i]=array[mid+1+i];
+    }
+
+    int i=0,j=0,k=left;
+    while(i<n1&&j<n2)
+    {
+      if(l[i]<=r[j])
+      {
+        array[k++]=array[i++];
+      }
+      else 
+      {
+        array[k++]=r[j++];
+      }
+    }
+
+    while(i<n1)
+    {
+      array[k++]=l[i++];
+    }
+    while(i<n2)
+    {
+      array[k++]=r[j++];
     }
   }
 }
