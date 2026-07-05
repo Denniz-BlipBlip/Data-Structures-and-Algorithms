@@ -1,7 +1,16 @@
-using System;
 
-class App {
-    static void Main() {
-        Console.WriteLine("Hello from Queue-Csharp!");
+namespace Queue
+{
+  class App
+  {
+    static void Main()
+    {
+      Queue qu=new Queue();
+
+      qu.enqueue("Denniz");
+      qu.view();
+      qu.dequeue();
+      qu.view();
     }
+  }
 }
