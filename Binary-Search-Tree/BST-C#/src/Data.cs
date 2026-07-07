@@ -2,7 +2,7 @@ namespace src
 {
   class Data
   {
-    public  Data(string data,int id)
+    public Data(string data,int id)
     {
       this.data=data;
       this.id=id;
