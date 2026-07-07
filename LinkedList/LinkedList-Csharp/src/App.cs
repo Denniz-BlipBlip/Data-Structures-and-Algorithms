@@ -1,7 +1,13 @@
-using System;
+namespace Data
+{
+  class App
+  {
+    static void Main()
+    {
+      Link link=new Link();
 
-class App {
-    static void Main() {
-        Console.WriteLine("Hello from LinkedList-Csharp!");
+      link.addTop("Denniz");
+      link.view();
     }
+  }
 }
