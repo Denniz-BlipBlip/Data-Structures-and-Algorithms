@@ -1,5 +1,8 @@
-def main():
-    print("Hello from LinkedList-Python!")
+from LinkedList import Link
 
-if __name__ == "__main__":
-    main()
+link=Link()
+
+link.insertTop('Denniz')
+link.view()
+link.insertAt(1,"flores")
+link.view()
