@@ -8,6 +8,7 @@ namespace src
       Tree node=new Tree();
 
       node.insert("Denniz",3);
+      node.traverse();
     }
   }
 }

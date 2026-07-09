@@ -6,7 +6,7 @@ namespace src
   {
     public Tree(){this.root=null;}
 
-    public void insert(string data,id)
+    public void insert(string data,int id)
     {
       this.root=insert(this.root,data,id);
     }
@@ -90,5 +90,7 @@ namespace src
       }
       return root;
     }
+
+    private Node root;
   }
 }
