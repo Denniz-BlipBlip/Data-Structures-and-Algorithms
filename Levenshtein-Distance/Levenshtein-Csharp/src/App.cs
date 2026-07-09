@@ -1,7 +1,14 @@
 using System;
 
-class App {
-    static void Main() {
-        Console.WriteLine("Hello from Levenshtein-Csharp!");
+namespace Leven
+{
+  class App
+  {
+    static void Main()
+    {
+      Leven lev=new Leven();
+
+      Console.WriteLine(lev.Ldistance("kitten","sitting"));
     }
+  }
 }
