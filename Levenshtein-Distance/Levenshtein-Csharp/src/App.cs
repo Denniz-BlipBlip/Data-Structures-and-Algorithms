@@ -9,6 +9,8 @@ namespace Leven
       Leven lev=new Leven();
 
       Console.WriteLine(lev.Ldistance("kitten","sitting"));
+
+      Console.WriteLine(lev.optimizedLD("kitten","sitting"));
     }
   }
 }
