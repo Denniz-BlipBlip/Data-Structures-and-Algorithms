@@ -11,3 +11,13 @@ def reverse(arr:list[int])->list[int]:
         right+=1
 
     return arr
+
+def reverseStr(word:str):
+    en=len(word)
+    rev:str=""
+
+    for i in range(en-1,0-1,-1):
+        rev=rev+word[i]
+
+    print(word[::-1])
+    print(rev)
