@@ -26,7 +26,6 @@ public class Stack
     this.top=top.getNext();
     this.size--;
   }
-
   public void peek()
   {
     if(isEmpty())
