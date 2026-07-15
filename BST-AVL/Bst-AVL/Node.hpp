@@ -1,12 +1,15 @@
 #pragma once
-#include <iostream>
+#include "Data.hpp"
 
-class Node
+class Node 
 {
   public:
     Node(Data *data):
-      right(nullptr),left(nullptr),data(data){}
+      data(data),right(nullptr),left(nullptr),height(1){}
 
-    Node get_right(){return this->right;}
-    Node get_left(){return this->left;}
+  private:
+    Node *right;
+    Node *left;
+    Data *data;
+    int height;
 };
