@@ -2,6 +2,8 @@
 #include "Data.hpp"
 #include "Node.hpp"
 #include <algorithm>
+#include <cstddef>
+#include <cstdio>
 #include <iostream>
 
 class Avl 
@@ -28,6 +30,78 @@ class Avl
   private:
     Node *insert(Node *root,std::string &data,int &id)
     {
+      if(!root){return new Node(new Data(data,id));}
+
+      if(id>root->data->get_id())
+      {
+        return root->right=insert(root->right,data,id);
+      }
+      else if(id>root->data->get_id())
+      {
+        return root->left=insert(root->left,data,id);
+      }
+      else 
+      {
+        return nullptr;
+      }
+
+      return this->re_balance(root);
+    }
+
+    Node *remove(Node *root,int id)
+    {
+      if(!root)
+      {
+        return  nullptr;
+      }
+
+      if(id>root->data->get_id())
+      {
+        return root->right=remove(root->right,id);
+      }
+      else if(id<root->data->get_id())
+      {
+        return root->left=remove(root->left,id);
+      }
+      else 
+      {
+        if(!root->right)
+        {
+          Node *temp=root->left;
+          delete root->data;
+          delete root;
+          return temp;
+        }
+        else if(!root->left)
+        {
+          Node *temp=root->right;
+          delete root->data;
+          delete root;
+          return temp;
+        }
+        else 
+        {
+          Node *temp=this->findMin(root->right);
+          root->data->set_data(temp->data->get_data());
+          root->data->set_id(temp->data->get_id());
+          return root->right=remove(root->right,temp->data->get_id());
+        }
+      }
+
+      return re_balance(root);
+    }
+
+    Node *findMin(Node *root)
+    {
+      if(!root)
+      {
+        return nullptr;
+      }
+
+      while(!root&&root->left)
+      {
+        root=root->left;
+      }
       return root;
     }
 
@@ -38,7 +112,7 @@ class Avl
 
     int balance_factor(Node *root) const
     {
-      return root ? this->height(root->left)-this->height(this->right):0;
+      return root ? this->height(root->left) - this->height(root->right):0;
     }
 
     void update_height(Node *right)
@@ -98,6 +172,18 @@ class Avl
       }
 
       return root;
+    }
+
+    void traversal(Node *root)
+    {
+      if(!root)
+      {
+        return;
+      }
+
+      traversal(root->right);
+      std::cout<<root->data->get_data()<<std::endl;
+      traversal(root->right);
     }
 
     Node *root;
