@@ -1,15 +1,13 @@
 #pragma once
+
 #include "Data.hpp"
-
-class Node 
+struct Node 
 {
-  public:
-    Node(Data *data):
-      data(data),right(nullptr),left(nullptr),height(1){}
+  Node(Data *data):
+    height(1),right(nullptr),left(nullptr),data(data){}
 
-  private:
-    Node *right;
-    Node *left;
-    Data *data;
-    int height;
+  Node *right;
+  Node *left;
+  Data *data;
+  int height;
 };
