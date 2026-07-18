@@ -1,5 +1,6 @@
-def main():
-    print("Hello from BST-py!")
+from Tree import Tree
 
-if __name__ == "__main__":
-    main()
+bst:Tree=Tree()
+
+bst.insert("Denniz,",1)
+bst.view()

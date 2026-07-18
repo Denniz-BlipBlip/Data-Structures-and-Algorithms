@@ -1,5 +1,5 @@
-from src import Node
-from src import Data
+from Data.Node import Node
+from Data.Data import Data
 
 class Tree:
     def __init__(self):
@@ -19,9 +19,11 @@ class Tree:
             return Node(Data(data,id))
 
         if id>root.data.id:
-            return root.right=self.__insert(root.right,data,id)
+            root.right=self.__insert(root.right,data,id)
+
         elif id<root.data.id:
-            return root.left=self.__insert(root.left,data,id)
+            root.left=self.__insert(root.left,data,id)
+
         else:
             return None
 
@@ -30,18 +32,18 @@ class Tree:
             return  None
 
         if id>root.data.id:
-            return root.right=self.__delete(root.right,id)
+            root.right=self.__delete(root.right,id)
         elif id<root.data.id:
-            return root.left=self.__delete(root.left,id)
+            root.left=self.__delete(root.left,id)
         else:
             if root.right is None:
-                return root.left
+                root.left
             elif root.left is None:
-                return root.right
+                root.right
             else:
                 temp:Node=self.__findMin(root.right)
                 root.data=temp.data
-                return root.right=self.__delete(root.right,temp.data.id)
+                root.right=self.__delete(root.right,temp.data.id)
 
     def __view(self,root:Node)->None:
         if root is None:
