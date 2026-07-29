@@ -57,11 +57,11 @@ class Avl
 
       if(id>root->data->get_id())
       {
-        return root->right=remove(root->right,id);
+        root->right=remove(root->right,id);
       }
       else if(id<root->data->get_id())
       {
-        return root->left=remove(root->left,id);
+        root->left=remove(root->left,id);
       }
       else 
       {
@@ -82,9 +82,8 @@ class Avl
         else 
         {
           Node *temp=this->findMin(root->right);
-          root->data->set_data(temp->data->get_data());
-          root->data->set_id(temp->data->get_id());
-          return root->right=remove(root->right,temp->data->get_id());
+          root->data=temp->data;
+          root->right=remove(root->right,temp->data->get_id());
         }
       }
 
