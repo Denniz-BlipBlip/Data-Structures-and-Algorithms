@@ -152,6 +152,21 @@ public class LinkedList
     }
   }
 
+  public int search(String data)
+  {
+    if(this.isEmpty())return -1;
+
+    Node curr=this.front;
+    while(curr!=null)
+    {
+      if(curr.getData().getWord()==data)
+      {
+        return 1;
+      }
+    }
+    return -1;
+  }
+
   public int getSize()
   {
     return this.size;
