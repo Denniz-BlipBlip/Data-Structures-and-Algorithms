@@ -167,6 +167,20 @@ public class LinkedList
     return -1;
   }
 
+  public void reverse()
+  {
+    Node curr=this.front,prev=null;
+    Node oVal=this.front;
+
+    while(curr!=null)
+    {
+      Node temp=curr.next;
+      curr.next=prev;
+      prev=curr;
+      curr=temp;
+    }
+  }
+
   public int getSize()
   {
     return this.size;
