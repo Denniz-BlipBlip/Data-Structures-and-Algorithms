@@ -5,6 +5,15 @@ import 'Node.dart';
 
 class Tree 
 {
+  Node? insert(Node? node,String data,int id)
+  {
+    if(node==null)return new Node(new Data(data,id));
+    if(id>node.data?.id){node?.right=this.insert(node?.right, data, id);}
+    else if(id<node.data?.id){node?.left=this.insert(node?.left, data, id);}
+    else{return node;}
+    return this._re_balance(node);
+  }
+
   int _height(Node? node){return (node!=null)?node.height:0;}
   int _balance_factor(Node? node){return (node!=null)?(this._height(node.left)-this._height(node.right)):0;}
   void _update_height(Node? node){node?.height(1+max(this._height(node?.left),this._height(node?.right)));}
