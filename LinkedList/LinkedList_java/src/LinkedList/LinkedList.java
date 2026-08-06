@@ -83,7 +83,7 @@ public class LinkedList<T>
 
     Node<T>curr=this.front;
     int n=0;
-    while(n<index)
+    while(n<index-1)
     {
       curr=curr.next;
       n++;
@@ -109,13 +109,13 @@ public class LinkedList<T>
     Node<T>node=new Node<>(new Data<>(data));
     Node<T>curr=this.front;
     int n=0;
-    while(n<index)
+    while(n<index-1)
     {
       curr=curr.next;
       n++;
     }
+    node.next=curr.next;;
     curr.next=node;
-    node.next=curr;
     this.size++;
   }
 
@@ -137,7 +137,7 @@ public class LinkedList<T>
     Node<T>curr=this.front;
     while(curr!=null)
     {
-      if(curr.data.data==data)return 1;
+      if(curr.data.data.equals(data))return 1;
     }
     return-1;
   }
@@ -152,8 +152,8 @@ public class LinkedList<T>
       prev=curr;
       curr=temp;
     }
-    this.front=oValue;
-    this.rear=prev;
+    this.front=prev;
+    this.rear=oValue;
   }
 
   private boolean empty(){return this.front==null;}
