@@ -2,7 +2,21 @@ package DoublyLinkedList;
 
 public class FavouriteFood<T>
 {
-
+  public void delete_head()
+  {
+    if(this.is_empty())return;
+    if(this.head==this.tail)
+    {
+      this.head=null;
+      this.tail=null;
+    }
+    else 
+    {
+      this.head=this.head.get_next();
+      this.head.set_prev(null);
+    }
+    this.size--;
+  }
   public void add_tail(T food)
   {
     Node<T>node=new Node(food);
