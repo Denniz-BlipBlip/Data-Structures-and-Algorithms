@@ -2,6 +2,30 @@ package AVL;
 
 public class Tree 
 {
+  private void inoreder(Node node)
+  {
+    if(this.isEmpty(node))return;
+    this.inoreder(node.get_left());
+    System.out.println(node.get_data().get_data());
+    this.inoreder(node.get_right());
+  }
+
+  private void preOrder(Node node)
+  {
+    if(this.isEmpty(node))return;
+    System.out.println(node.get_data().get_data()); 
+    this.preOrder(node.get_left());
+    this.preOrder(node.get_right());
+  }
+
+  private void postOrder(Node node)
+  {
+    if(this.isEmpty(node))return;
+    this.postOrder(node.get_left());
+    this.postOrder(node.get_right());
+    System.out.println(node.get_data().get_data());
+  }
+
   private Node find_min(Node node)
   {
     while(!this.isEmpty(node)&&!this.isEmpty(node.get_left()))node=node.get_left();
